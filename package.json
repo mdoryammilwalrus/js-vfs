@@ -9,7 +9,7 @@
   "scripts": {
     "docs:dev": "retype watch",
     "docs:build": "yarn jsdoc && retype build",
-    "jsdoc": "jsdoc2md --template docs/API.hbs --files src/client/*.js > docs/API.md"
+    "jsdoc": "jsdoc2md --files src/client/*.js --template docs/API.hbs --no-cache > docs/API.md"
   },
   "repository": {
     "type": "git",
