@@ -6,9 +6,7 @@
     <script src="build/inject.js"></script>
     <script src="build/data.js"></script>
     <script>
-        var _VFS = new InjectPolyfills()
-        new JSZip.loadAsync(zip).then(zip => _VFS.zip = zip);
-        _VFS.apply();
+        var _VFS = new InjectPatches(JSZip.loadAsync(zip));
     </script>
 </head>
 <body>

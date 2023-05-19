@@ -3,12 +3,34 @@
  * This file requires data.js to work!
  */
 
-class InjectPolyfills {
+/**
+ * The main class for js-vfs 
+ */
+class InjectPatches extends EventTarget {
+
+    /**
+     * Create a new patch instance
+     * @param {JSZip | Promise<JSZip>} zip 
+     */
     constructor(zip) {
+        super();
         this._fetch = window.fetch;
         this._XMLHttpRequest = window.XMLHttpRequest;
-        this.zip = zip;
+        if(zip instanceof Promise) {
+            zip.then(zip => {
+                this.zip = zip;
+                this.dispatchEvent(new Event("ready"));
+                this.apply();
+            });
+        } else {
+            this.zip = zip;
+            this.dispatchEvent(new Event("ready"));
+        }
     }
+    /**
+     * @param {String} path 
+     * @returns {String}
+     */
     formatPath(path) {
         if(path.endsWith("/")) path = path.slice(0, path.length - 1);
         if(path.startsWith("./")) path = path.slice(2);
@@ -64,11 +86,19 @@ class InjectPolyfills {
         }
         return XMLHttpRequestPollyfill;
     }
+    /**
+     * Apply the patches
+     * @returns {this} this for chaining
+     */
     apply() {
         window.fetch = (path, options) => this.fetch(path, options);
         window.XMLHttpRequest = this.XHRPollyfill;
         return this;
     }
+    /**
+     * Remove the patches
+     * @returns {this} this for chaining
+     */
     undo() {
         window.fetch = this._fetch;
         window.XMLHttpRequest = this._XMLHttpRequest;

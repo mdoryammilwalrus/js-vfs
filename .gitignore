@@ -1,3 +1,5 @@
 node_modules
 build
 .retype
+# Generated on build
+docs/API.md

@@ -3,8 +3,8 @@ import { join } from "node:path";
 
 import { Command } from "commander";
 import log from "npmlog";
-import packageJSON from "./package.json" assert { type: "json" };
-import compile from "./lib/compile.js";
+import packageJSON from "../package.json" assert { type: "json" };
+import compile from "./compile.js";
 const program = new Command();
 
 program

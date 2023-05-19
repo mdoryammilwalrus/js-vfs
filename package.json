@@ -4,7 +4,12 @@
   "description": "JavaScript read-only virtual file system for local files",
   "type": "module",
   "bin": {
-    "js-vfs": "bin.js"
+    "js-vfs": "src/bin.js"
+  },
+  "scripts": {
+    "docs:dev": "retype watch",
+    "docs:build": "yarn jsdoc && retype build",
+    "jsdoc": "jsdoc2md --template docs/API.hbs --files src/client/*.js > docs/API.md"
   },
   "repository": {
     "type": "git",
@@ -20,5 +25,10 @@
     "commander": "^10.0.1",
     "jszip": "^3.10.1",
     "npmlog": "^7.0.1"
+  },
+  "devDependencies": {
+    "jsdoc": "^4.0.2",
+    "jsdoc-to-markdown": "^8.0.0",
+    "retypeapp": "^2.4.0"
   }
 }

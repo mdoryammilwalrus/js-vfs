@@ -4,7 +4,11 @@
  * so you can use the same inject.js file for any VFS encoded filesystem.
  */
 
-// Uint8Array containing the files
+
+/**
+ * Uint8Array containing the files
+ * @type {Array}
+ */
 const zip = DATA;
 
 JSZip
