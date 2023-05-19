@@ -1,0 +1,6 @@
+input: ./docs
+output: .retype
+url: mdoryammilwalrus.github.io/js-vfs
+branding:
+  title: js-vfs
+  label: Docs
