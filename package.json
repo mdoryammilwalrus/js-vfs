@@ -1,0 +1,24 @@
+{
+  "name": "js-vfs",
+  "version": "1.0.0",
+  "description": "JavaScript read-only virtual file system for local files",
+  "type": "module",
+  "bin": {
+    "js-vfs": "bin.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mdoryammilwalrus/js-vfs.git"
+  },
+  "author": "mdoryammilwalrus",
+  "license": "GPL-3.0-only",
+  "bugs": {
+    "url": "https://github.com/mdoryammilwalrus/js-vfs/issues"
+  },
+  "homepage": "https://github.com/mdoryammilwalrus/js-vfs#readme",
+  "dependencies": {
+    "commander": "^10.0.1",
+    "jszip": "^3.10.1",
+    "npmlog": "^7.0.1"
+  }
+}

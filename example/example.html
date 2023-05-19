@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>js-vfs example</title>
+    <script src="build/inject.js"></script>
+    <script src="build/data.js"></script>
+    <script>
+        var _VFS = new InjectPolyfills()
+        new JSZip.loadAsync(zip).then(zip => _VFS.zip = zip);
+        _VFS.apply();
+    </script>
+</head>
+<body>
+    <h1>js-vfs example</h1>
+</body>
+</html>
