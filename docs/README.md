@@ -15,12 +15,12 @@ Normal page navigation will cause **ALL THE FILES** to be reloaded
 ## Why is this useful?
 
 js-vfs can be used for:
-- Bundling assets to a file
-- As a bundler for assets
+- Bundling assets
+- Getting things to work on local or single files
 
 ## How does this work?
 js-vfs replaces `fetch` and `XMLHttpRequest` with a patch function that reads from the encoded data.
-The data encoding works similar to [TurboWarp/Packager](https://github.com/TurboWarp/packager), but data is saved in a `Uint8Array` instead of a Base85 encoded `String`.
+The data encoding works the same way that [TurboWarp/Packager](https://github.com/TurboWarp/packager) does.
 
 The JavaScript for injecting js-vfs into a file looks like this:
 ```js

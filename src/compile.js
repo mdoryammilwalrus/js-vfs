@@ -1,27 +1,26 @@
-import * as path from "node:path";
-import * as fs from "node:fs";
+import { dirname, join } from "node:path";
+import { readFileSync, copyFileSync, createWriteStream } from "node:fs";
 import { createRequire } from "node:module";
 import { fileURLToPath } from "node:url";
+import { encode, decode } from "./base85.js";
 
-import JSZip from "jszip";
 import log from "npmlog";
 
-const __dirname = path.dirname(fileURLToPath(import.meta.url));
+const __dirname = dirname(fileURLToPath(import.meta.url));
 const require = createRequire(import.meta.url);
 
 export default async function compile(dataPath, buildPath) {
     log.info("compile", "Loading data");
-    const data = fs.readFileSync(path.join(dataPath, "data.zip"));
-    const zip = await JSZip.loadAsync(data, { createFolders: true });
-    fs.copyFileSync(path.join(__dirname, "client/inject.js"), path.join(buildPath, "inject.js"));
+    const data = new Uint8Array(readFileSync(join(dataPath, "data.zip")));
+    copyFileSync(join(__dirname, "client/inject.js"), join(buildPath, "inject.js"));
     log.verbose("compile", "Writing data");
-    fs.createWriteStream(path.join(buildPath, "data.js")).end(await createData(zip));
+    createWriteStream(join(buildPath, "data.js")).end(await createData(data));
     log.info("compile", "Done");
 }
 
-async function createData(zip) {
-    const data = await zip.generateAsync({ type: "uint8array" });
-    return fs.readFileSync(path.join(__dirname, "client/data.template.js"), { encoding: "utf8" })
-        .replace("DATA", JSON.stringify(Array.from(data)))
-        .replace("JSZip", fs.readFileSync(require.resolve("jszip/dist/jszip.min.js"), { encoding: "utf8" }));
+async function createData(data) {
+    return readFileSync(join(__dirname, "client/data.template.js"), { encoding: "utf8" })
+        .replace("DATA", encode(data.buffer).replaceAll(String.fromCharCode(92), String.fromCharCode(92, 92)))
+		.replace("DECODE", decode.toString())
+        .replace("JSZip", readFileSync(require.resolve("jszip/dist/jszip.min.js"), { encoding: "utf8" }));
 }

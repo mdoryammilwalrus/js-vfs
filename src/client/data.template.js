@@ -4,11 +4,12 @@
  * so you can use the same inject.js file for any VFS encoded filesystem.
  */
 
+const base85decode = DECODE;
 
 /**
- * Uint8Array containing the files
- * @type {Array}
+ * Base85 encoded string containing the files
+ * @type {String}
  */
-const zip = DATA;
+const zip = base85decode("DATA");
 
 JSZip
