@@ -1,12 +1,12 @@
 /**
- * js-vfs polyfills
- * This file requires data.js to work!
+ * js-vfs
+ * This file requires data.js and jszip.js to work!
  */
 
 /**
  * The main class for js-vfs 
  */
-class InjectPatches extends EventTarget {
+class JSVfs extends EventTarget {
 
     /**
      * Create a new patch instance

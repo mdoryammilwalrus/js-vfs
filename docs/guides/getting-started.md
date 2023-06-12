@@ -21,10 +21,11 @@ yarn global add github:mdoryammilwalrus/js-vfs
 
 To add js-vfs to your HTML pages, add this html in the `<head>` above any other script tags:
 ```html
-<script src="build/inject.js"></script>
+<script src="build/jsvfs.js"></script>
+<script src="build/jszip.js"></script>
 <script src="build/data.js"></script>
 <script>
-    var _VFS = new InjectPatches(JSZip.loadAsync(zip));
+    var _VFS = new JSVfs(JSZip.loadAsync(zip));
 </script>
 ```
 

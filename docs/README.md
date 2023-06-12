@@ -22,10 +22,10 @@ js-vfs can be used for:
 js-vfs replaces `fetch` and `XMLHttpRequest` with a patch function that reads from the encoded data.
 The data encoding works the same way that [TurboWarp/Packager](https://github.com/TurboWarp/packager) does.
 
-The JavaScript for injecting js-vfs into a file looks like this:
+The JavaScript for using js-vfs in a file looks like this:
 ```js
 // Create a new js-vfs instance and auto-apply the patches
-var _VFS = new InjectPatches(JSZip.loadAsync(zip));
+var _VFS = new JSVfs(JSZip.loadAsync(zip));
 ```
 
 You can read more about this on the [Getting Started](guides/getting-started.md) page.

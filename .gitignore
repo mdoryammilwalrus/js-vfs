@@ -1,5 +1,8 @@
 node_modules
-build
 .retype
-# Generated on build
+# Generated on docs build
 docs/API.md
+
+# We don't want these files to be included when using the example
+build
+data.zip

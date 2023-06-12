@@ -3,10 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <title>js-vfs example</title>
-    <script src="build/inject.js"></script>
+    <script src="build/jsvfs.js"></script>
+	<script src="build/jszip.js"></script>
     <script src="build/data.js"></script>
     <script>
-        var _VFS = new InjectPatches(JSZip.loadAsync(zip));
+        var _VFS = new JSVfs(JSZip.loadAsync(zip));
     </script>
 </head>
 <body>

@@ -1,15 +1,11 @@
 /** js-vfs data file
  * This file contains the encoded data.
- * inject.js only contains the code required to use this file,
- * so you can use the same inject.js file for any VFS encoded filesystem.
+ * jsvfs.js and jszip.js only contains the code required to use this file,
+ * so you can use the same jsvfs.js and jsizp.js file for any VFS encoded filesystem.
  */
-
-const base85decode = DECODE;
 
 /**
- * Base85 encoded string containing the files
- * @type {String}
+ * Base85 decoded Uint8Array containing the files
+ * @type {Uint8Array}
  */
-const zip = base85decode("DATA");
-
-JSZip
+const zip = (DECODE)("DATA");
