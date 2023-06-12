@@ -9,7 +9,7 @@ order: 1
 
 +++ NPM
 ```bash
-npm install github:mdoryammilwalrus/js-vfs
+npm install github:mdoryammilwalrus/js-vfs --global
 ```
 +++ Yarn (1.x)
 ```bash
